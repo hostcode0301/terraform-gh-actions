@@ -1,4 +1,12 @@
 terraform {
+  cloud {
+    organization = "hostcode0301"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -9,9 +17,13 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
+variable "region" {
+  default = "us-east-1"
+}
+
 provider "aws" {
-  region  = "us-east-1"
-  profile = "terraform"
+  region = var.region
+  # profile = "terraform"
 }
 
 # Find latest ubuntu ami

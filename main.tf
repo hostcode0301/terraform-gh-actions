@@ -23,7 +23,7 @@ variable "region" {
 
 provider "aws" {
   region = var.region
-  # profile = "terraform"
+  # profile = "terraform" # optional because this not work in production workflow
 }
 
 # Find latest ubuntu ami
